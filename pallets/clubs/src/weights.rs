@@ -54,6 +54,7 @@ impl<T: frame_system::Config> WeightInfo for ClubsWeight<T> {
 	}
 }
 
+// For backwards compatibility and tests
 impl WeightInfo for () {
   fn add_member() -> Weight {
 		(19_000_000 as Weight)

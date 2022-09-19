@@ -77,10 +77,7 @@ pub fn new_test_ext() -> sp_io::TestExternalities {
 	let mut ext = sp_io::TestExternalities::new(storage);
 	ext.execute_with(|| System::set_block_number(1));
 	ext
-
-	// system::GenesisConfig::default().build_storage::<Test>().unwrap().into()
 }
-
 
 pub fn assert_last_event<T: pallet_clubs::Config>(
 	generic_event: <T as pallet_clubs::Config>::Event,

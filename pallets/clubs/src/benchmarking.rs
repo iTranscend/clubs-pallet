@@ -1,4 +1,4 @@
-//! Benchmarking setup for pallet-club
+//! Benchmarking setup for pallet-clubs
 use super::*;
 
 #[allow(unused)]

@@ -1,7 +1,6 @@
 use crate::{mock, mock::*, Error};
 use frame_support::{assert_noop, assert_ok};
 use frame_benchmarking::account;
-use frame_system::Account;
 
 const SEED: u32 = 0;
 
@@ -30,15 +29,13 @@ fn remove_a_member_from_a_club() {
 
     assert_ok!(ClubsModule::add_member(Origin::root(), club.clone(), member.clone()));
 
-    // assert the last event
 		crate::mock::assert_last_event::<Test>(mock::Event::ClubsModule(
 			crate::Event::<Test>::MemberAdded(club.clone(), member.clone()),
 		));
 
-		// now remove member
+		// remove member
 		assert_ok!(ClubsModule::remove_member(Origin::root(), club.clone(), member.clone()));
 
-		// assert the last event
 		crate::mock::assert_last_event::<Test>(mock::Event::ClubsModule(
 			crate::Event::<Test>::MemberRemoved(club.clone(), member.clone()),
 		));
