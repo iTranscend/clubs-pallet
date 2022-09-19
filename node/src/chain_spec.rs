@@ -1,6 +1,6 @@
 use node_template_runtime::{
 	AccountId, AuraConfig, BalancesConfig, GenesisConfig, GrandpaConfig, Signature, SudoConfig,
-	SystemConfig, WASM_BINARY, TemplateModuleConfig
+	SystemConfig, WASM_BINARY, ClubsModuleConfig
 };
 use sc_service::ChainType;
 use sp_consensus_aura::sr25519::AuthorityId as AuraId;
@@ -160,7 +160,7 @@ fn testnet_genesis(
 			// Assign network admin rights.
 			key: Some(root_key),
 		},
-    template_module: TemplateModuleConfig {
+    clubs_module: ClubsModuleConfig {
 			phantom: Default::default(),
 			clubs: Some(clubs.clone()),
 		},

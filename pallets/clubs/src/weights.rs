@@ -40,13 +40,13 @@ pub trait WeightInfo {
 /// Weight functions for `pallet_clubs`.
 pub struct ClubsWeight<T>(PhantomData<T>);
 impl<T: frame_system::Config> WeightInfo for ClubsWeight<T> {
-	// Storage: TemplateModule Clubs (r:1 w:1)
+	// Storage: ClubsModule Clubs (r:1 w:1)
 	fn add_member() -> Weight {
 		(19_000_000 as Weight)
 			.saturating_add(T::DbWeight::get().reads(1 as Weight))
 			.saturating_add(T::DbWeight::get().writes(1 as Weight))
 	}
-	// Storage: TemplateModule Clubs (r:1 w:1)
+	// Storage: ClubsModule Clubs (r:1 w:1)
 	fn remove_member() -> Weight {
 		(18_000_000 as Weight)
 			.saturating_add(T::DbWeight::get().reads(1 as Weight))
@@ -60,7 +60,7 @@ impl WeightInfo for () {
 			.saturating_add(RocksDbWeight::get().reads(1 as Weight))
 			.saturating_add(RocksDbWeight::get().writes(1 as Weight))
 	}
-	// Storage: TemplateModule Clubs (r:1 w:1)
+	// Storage: ClubsModule Clubs (r:1 w:1)
 	fn remove_member() -> Weight {
 		(18_000_000 as Weight)
 			.saturating_add(RocksDbWeight::get().reads(1 as Weight))

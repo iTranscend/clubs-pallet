@@ -289,7 +289,7 @@ construct_runtime!(
 		TransactionPayment: pallet_transaction_payment,
 		Sudo: pallet_sudo,
 		// Include the custom logic from the pallet-clubs in the runtime.
-		TemplateModule: pallet_clubs,
+		ClubsModule: pallet_clubs,
 	}
 );
 
@@ -334,7 +334,7 @@ mod benches {
 		[frame_system, SystemBench::<Runtime>]
 		[pallet_balances, Balances]
 		[pallet_timestamp, Timestamp]
-		[pallet_clubs, TemplateModule]
+		[pallet_clubs, ClubsModule]
 	);
 }
 
