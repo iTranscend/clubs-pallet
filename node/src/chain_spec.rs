@@ -1,6 +1,6 @@
 use node_template_runtime::{
 	AccountId, AuraConfig, BalancesConfig, GenesisConfig, GrandpaConfig, Signature, SudoConfig,
-	SystemConfig, WASM_BINARY,
+	SystemConfig, WASM_BINARY, TemplateModuleConfig
 };
 use sc_service::ChainType;
 use sp_consensus_aura::sr25519::AuthorityId as AuraId;
@@ -132,6 +132,15 @@ fn testnet_genesis(
 	endowed_accounts: Vec<AccountId>,
 	_enable_println: bool,
 ) -> GenesisConfig {
+
+  // creating at least two clubs in genesis
+  let club1 = (b"rotary".to_vec(), Vec::new());
+	let club2 = (b"tennis".to_vec(), Vec::new());
+
+  let mut clubs = vec![];
+   clubs.push(club1);
+   clubs.push(club2);
+
 	GenesisConfig {
 		system: SystemConfig {
 			// Add Wasm runtime to storage.
@@ -150,6 +159,10 @@ fn testnet_genesis(
 		sudo: SudoConfig {
 			// Assign network admin rights.
 			key: Some(root_key),
+		},
+    template_module: TemplateModuleConfig {
+			phantom: Default::default(),
+			clubs: Some(clubs.clone()),
 		},
 		transaction_payment: Default::default(),
 	}
