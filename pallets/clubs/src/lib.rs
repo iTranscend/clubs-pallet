@@ -84,13 +84,10 @@ pub mod pallet {
 		MemberDoesNotExistInClub,
 	}
 
-	// Dispatchable functions allows users to interact with the pallet and invoke state changes.
-	// These functions materialize as "extrinsics", which are often compared to transactions.
-	// Dispatchable functions must be annotated with a weight and must return a DispatchResult.
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
 		/// Adds a member to a club and emits an event
-		#[pallet::weight(1_000)]
+		#[pallet::weight(<T as Config>::WeightInfo::add_member())]
 		pub fn add_member(
 			origin: OriginFor<T>,
 			club: Vec<u8>,
@@ -119,7 +116,7 @@ pub mod pallet {
 		}
 
 		// Removes a member from a club and emits an event if successful
-		#[pallet::weight(1_000)]
+		#[pallet::weight(<T as Config>::WeightInfo::remove_member())]
 		pub fn remove_member(
 			origin: OriginFor<T>,
 			club: Vec<u8>,
